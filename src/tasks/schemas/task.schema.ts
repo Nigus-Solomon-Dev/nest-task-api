@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 export type TaskDocument = Task & Document;
 
-@Schema()
+@Schema({ timestamps: true })
 export class Task {
   @Prop({ required: true })
   title: string;
@@ -13,9 +13,6 @@ export class Task {
 
   @Prop({ default: false })
   isCompleted: boolean;
-
-  @Prop({ default: Date.now })
-  createdAt: Date;
 }
 
 export const TaskSchema = SchemaFactory.createForClass(Task);
